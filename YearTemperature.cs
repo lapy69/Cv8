@@ -12,6 +12,12 @@ namespace Cv8
 
         public List<double> MonthTemperatures;
 
+        public YearTemperature(int y, List<double> t)
+        {
+            Year = y;
+            MonthTemperatures = new List<double>();
+            MonthTemperatures = t;
+        }
         public double MaxTemperature
         {
             get
@@ -46,19 +52,12 @@ namespace Cv8
                     temporary = temporary + temperature;
                 }
 
-                return temporary/12.0;
+                return temporary / 12.0;
             }
             private set
             {
 
             }
-        }
-
-        public YearTemperature(int y, List<double> t)
-        {
-            Year = y;
-            MonthTemperatures = new List<double>();
-            MonthTemperatures = t;
         }
     }
 }
