@@ -45,14 +45,7 @@ namespace Cv8
         {
             get
             {
-                double temporary = 0.0;
-
-                foreach (double temperature in MonthTemperatures)
-                {
-                    temporary = temporary + temperature;
-                }
-
-                return temporary / 12.0;
+                return MonthTemperatures.Average();
             }
             private set
             {

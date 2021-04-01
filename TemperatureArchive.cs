@@ -16,10 +16,11 @@ namespace Cv8
             StreamReader reader = File.OpenText(path);
             _archive = new SortedDictionary <double, YearTemperature>();
 
-            while (reader.ReadLine() != null)
+            string line;
+ 
+            while ((line = reader.ReadLine()) != null)
             {
                 int year = 0;
-                string line = reader.ReadLine();
                 List<double> temperatures = new List<double>();
 
                 line = line.Replace(":", "");
@@ -74,11 +75,11 @@ namespace Cv8
         {
             if (_archive.ContainsKey(y))
             {
-                Console.WriteLine("{0}: ", y);
+                Console.Write("\n\n{0}:\t", y);
 
                 foreach (double temperature in _archive[y].MonthTemperatures)
                 {
-                    Console.WriteLine("{0:0.0}; ", temperature);
+                    Console.Write("{0:0.0}\t", temperature);
                 }
             }
             else
@@ -91,17 +92,18 @@ namespace Cv8
         {
             foreach (var item in _archive.Values)
             {
-                Console.WriteLine("{0}:\t", item.Year);
+                Console.Write("\n{0}:\t", item.Year);
 
                 foreach (double temperature in item.MonthTemperatures)
                 {
-                    Console.WriteLine("{0:0.0}\t", temperature);
+                    Console.Write("{0:0.0}\t", temperature);
                 }
             }
         }
 
         public void PrintAnnualAverageTemperature()
         {
+            Console.WriteLine("\n");
             foreach (var item in _archive.Values)
             {
                 Console.WriteLine("{0}: {1:0.0}", item.Year, item.AnnualAvgTemperature);
@@ -125,7 +127,7 @@ namespace Cv8
                 }
             }
 
-            Console.WriteLine("AvgMothlyTemperature:\t");
+            Console.WriteLine("\nAvgMothlyTemperature:\t");
             for (int i = 0; i < 12; i++)
             {
                 Console.WriteLine("{0:0.0}\t", AvgMonthTemp[i] / _archive.Keys.Count);

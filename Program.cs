@@ -10,6 +10,25 @@ namespace Cv8
     {
         static void Main(string[] args)
         {
+            string Path = "TXT.txt";
+            string SavePath = "TXT2.txt";
+
+            TemperatureArchive temperatures = new TemperatureArchive();
+
+            temperatures.Load(Path);
+
+            temperatures.PrintTemperatures();
+            temperatures.PrintAnnualAverageTemperature();
+            temperatures.PrintMonthlyAverageTemperature();
+
+            temperatures.Calibration(1);
+            temperatures.PrintTemperatures();
+
+            temperatures.Search(2018);
+
+            temperatures.Save(SavePath);
+
+            Console.ReadLine();
         }
     }
 }
